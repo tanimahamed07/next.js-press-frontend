@@ -1,32 +1,25 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import React, { useActionState, useEffect } from "react";
-import { loginAction } from "../_action/authAction";
+// import { useRouter } from "next/navigation"
+import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
-// import { useRouter } from "next/navigation";
+import { loginAction } from "../_action/authAction";
 
-// type LoginState = {
-//   success: true;
-//   statusCode: number;
-//   message: string;
-//   data: {
-//     accessToken: string;
-//     refreshToken: string;
-//   };
-// };
 
-function LoginForm() {
+const LoginForm = () => {
   const [state, action, pending] = useActionState(loginAction, false);
   // const router = useRouter()
 
   useEffect(() => {
     if (!state) return;
 
-    if(state.success){
-        toast.success(state.message || "Login Successful");
-        // router.push("/dashboard")
-    }
+    // if(state.success){
+    //     toast.success(state.message || "Login Successful");
+    //     // router.push("/dashboard")
+    // }
 
     if (!state.success) {
       toast.error(state.message || "Login failed");
@@ -48,10 +41,10 @@ function LoginForm() {
           placeholder="Enter Your Password"
           required
         />
-        <Button type="submit">{pending ? "Submitting....." : "login"}</Button>
+        <Button type="submit">{pending ? "Submitting..." : "Login"}</Button>
       </Card>
     </form>
   );
-}
+};
 
 export default LoginForm;

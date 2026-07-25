@@ -1,8 +1,6 @@
 import LoginForm from "../_components/LoginForm";
 
 export default function LoginPage() {
-  console.log(process.env.BACKEND_API_URL, "sensitive");
-  console.log(process.env.NEXT_PUBLIC_BACKEND_API_URL, "PUBLIC");
   return (
     <>
       <div className="flex min-h-screen items-center justify-center">
